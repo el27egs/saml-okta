@@ -1,0 +1,252 @@
+metadata:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<md:EntityDescriptor entityID="http://www.okta.com/exk117uc9zogTDa2n698"
+    xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata">
+    <md:IDPSSODescriptor WantAuthnRequestsSigned="false"
+        protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+        <md:KeyDescriptor use="signing">
+            <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                <ds:X509Data>
+                    <ds:X509Certificate>MIIDtDCCApygAwIBAgIGAZ0TLZrTMA0GCSqGSIb3DQEBCwUAMIGaMQswCQYDVQQGEwJVUzETMBEG
+                        A1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEU
+                        MBIGA1UECwwLU1NPUHJvdmlkZXIxGzAZBgNVBAMMEmludGVncmF0b3ItODkwMDc5NzEcMBoGCSqG
+                        SIb3DQEJARYNaW5mb0Bva3RhLmNvbTAeFw0yNjAzMjIwMTMzMDlaFw0zNjAzMjIwMTM0MDlaMIGa
+                        MQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNj
+                        bzENMAsGA1UECgwET2t0YTEUMBIGA1UECwwLU1NPUHJvdmlkZXIxGzAZBgNVBAMMEmludGVncmF0
+                        b3ItODkwMDc5NzEcMBoGCSqGSIb3DQEJARYNaW5mb0Bva3RhLmNvbTCCASIwDQYJKoZIhvcNAQEB
+                        BQADggEPADCCAQoCggEBANXwrNP9vuLlgcc+yzX9PjY7VZI5S8AzWsoWQ4lpKqCgTcfZPaMJng/e
+                        vXmLX8CkoChVko3T15xHudkU9yg4mniIYETAFQ5D+sTVhWjy8Q42m3z0BoTAI+CkHVzQm+Gwg6ta
+                        pRy3V3jyvyB6P/Ll4UNnSxMDb09KBTeezL1ntK9wzRZ9+VGxvh1zPeiysjBjfqhoYjfkHYpPU2R0
+                        t0VLd0ta0QEs+pteHBZrKs/+iZ/HWfie8VJk6KCojoqwfyMt9WZ05gEW8wj2NsluqiDs3XSTigEs
+                        gicbwQt5dcVPqZHtVafTo7SB1tDk/+sCl/iDvnbXlQLN1LyGmEqy/G/5O6kCAwEAATANBgkqhkiG
+                        9w0BAQsFAAOCAQEAm9bACFStQAKifn3whVP4Z38dKrjcE3tIkUJw3KpUYgpk5JX95BzNiRncQcml
+                        ysX+yWItEwA+Xa09qGbJwXOyBfqAMdSJXH6WlTKHZhgX4ivTmEdNeL+756LHprqb4Fqbqptp/WHf
+                        VcGRXfPMZSD934IkNYFbW44IzcjmbJPu0Ju/v3G39K6GkU5gTJISvXzWaLSrtjY/Yqkoa7/CyoY/
+                        53w3jeEJlZ7QQdkV3W5tE9BVsXvRvZ9NqUqRXtWuZuMaQZJ0EpjWIlqb3vX4r+7+epjB4IlE/CUV
+                        2NgCDJ9K0zoZ7RS6Tw08EvZsi1UQsRqfe8Lz58JywyiMC8ikZZUPow==</ds:X509Certificate>
+                </ds:X509Data>
+            </ds:KeyInfo>
+        </md:KeyDescriptor>
+        <md:NameIDFormat>urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified</md:NameIDFormat>
+        <md:NameIDFormat>urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress</md:NameIDFormat>
+        <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+            Location="https://integrator-8900797.okta.com/app/integrator-8900797_appbuildersimpleserver_1/exk117uc9zogTDa2n698/sso/saml" />
+        <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
+            Location="https://integrator-8900797.okta.com/app/integrator-8900797_appbuildersimpleserver_1/exk117uc9zogTDa2n698/sso/saml" />
+    </md:IDPSSODescriptor>
+</md:EntityDescriptor>
+
+
+Este es el request tomado del ejemplo cambiando los placeholders
+de acuerdo a nuestro ejemplo y configuracion:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<saml2p:AuthnRequest
+	xmlns:saml2p="urn:oasis:names:tc:SAML:2.0:protocol"
+	AssertionConsumerServiceURL="http://localhost:8080/okta/acs-url"
+	Destination="https://integrator-8900797.okta.com/app/integrator-8900797_appbuildersimpleserver_1/exk117uc9zogTDa2n698/sso/saml"
+	ID="saml-req-001"
+	IssueInstant="2026-03-22T02:04:20.295Z"
+	ProtocolBinding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+	Version="2.0">
+	<saml2:Issuer
+		xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion">
+		http://localhost:8080/appbuilder-simple-server
+	</saml2:Issuer>
+</saml2p:AuthnRequest>
+
+https://www.samltool.com/encode.php
+
+Primero pegamos este xml en: Deflate + Base64 Encode
+
+El deflated en este caso significa GZIP.
+
+Usamos el Base64:
+fVLLbsIwEDyDxD8g3x077oPEIiBaVBWJqghCD70gEyyISOzgdRDq19cmReWAuNnenZ3xzPaHp7LoHqWBXKsEhQFFXakyvcnVNkHL9A1HaDjotPsgyoJVfFTbnZrLQy3BdtotB1bAm1qCaqO4FpADV6KUwG3GF6OPKWcB5ZXRVme6QA41ApDGOsJXraAupVlIc8wzuZxPE7SztuKEFDoTxU6D5RGNKNF7K4jIANfmPGLs+HMl7Fm1h4DD5MrKrRFWGxzFlPbiXuBxQaZLIqrqRn3lntd1Xmy8AWVVSCfMmbEKiTztw7BXZ/GP3qZjwdRzHBEATfxnvYLJOEH+jI08YErD8xtALScKrFA2QYyyZ0wfMGMpZZw+ckYDFj99+87Znx0vuWqsvufdumkC/p6mMzz7XKR+xNclNNeCXEStJiN+FmHc/Tqd+wTiEgga3Lb/3ybPQ66J/HKQG9sx+AU=
+
+Debido a que el Base64 no esta codificado pora URLs y necesitamos pasar esto en una llamada GET, usamos la otra opcion que es : 
+URL Encode/Decode
+
+fVLLbsIwEDyDxD8g3x077oPEIiBaVBWJqghCD70gEyyISOzgdRDq19cmReWAuNnenZ3xzPaHp7LoHqWBXKsEhQFFXakyvcnVNkHL9A1HaDjotPsgyoJVfFTbnZrLQy3BdtotB1bAm1qCaqO4FpADV6KUwG3GF6OPKWcB5ZXRVme6QA41ApDGOsJXraAupVlIc8wzuZxPE7SztuKEFDoTxU6D5RGNKNF7K4jIANfmPGLs%2BHMl7Fm1h4DD5MrKrRFWGxzFlPbiXuBxQaZLIqrqRn3lntd1Xmy8AWVVSCfMmbEKiTztw7BXZ%2FGP3qZjwdRzHBEATfxnvYLJOEH%2BjI08YErD8xtALScKrFA2QYyyZ0wfMGMpZZw%2BckYDFj99%2B87Znx0vuWqsvufdumkC%2Fp6mMzz7XKR%2BxNclNNeCXEStJiN%2BFmHc%2FTqd%2BwTiEgga3Lb%2F3ybPQ66J%2FHKQG9sx%2BAU%3D
+
+En este caso usamos el valor de Destination del Idp con un query parameter: SAMLRequest con el valor
+de arriba
+
+https://integrator-8900797.okta.com/app/integrator-8900797_appbuildersimpleserver_1/exk117uc9zogTDa2n698/sso/saml?SAMLRequest=fVLLbsIwEDyDxD8g3x077oPEIiBaVLUSVRGEHnpBJlgQkdjB61SoX187KSoHxM327uyMZ3Y4PpVF%2F1sayLVKUBhQ1Jcq09tc7RK0Sl9whMajXncIoixYxSe13auFPNYSbK%2FbcWAFvK0lqDaKawE5cCVKCdxmfDl5n3EWUF4ZbXWmC%2BRQEwBprCN81grqUpqlNN95JleLWYL21lackEJnothrsDyiESX6YAURGeDaNCOmjj9XwjaqPQQcJldW7oyw2uAopnQQDwKPCzJdElFVV%2Bpr97yp82LrDSirQjphzox1SOTpEIaDOot%2F9C6dCqYe44gAaOI%2F6xW8TRPkz9jII6Y0bN4AavmmwAplE8Qoe8T0DjOWUsbpPWc0YPHDl%2B%2Bc%2F9nxlKvW6lvebdom4K9pOsfzj2XqR3yeQ3MtyEXUaTPijQjj7pfp3CYQ50CaOZ3rEfxbhVuvcGuWZyaX1H5dyJV9Gf0C
+
+Levantamos nuestro server local y abrimos el SAML DevTools en el Browser, pegamos y listo:
+
+Obtenemos un POST hacia nuestra aplicacion o ServiceProvider y lo que hacemos es pinta el body el cual es alto asi: 
+SAMLResponse=DAERREFEFER...
+
+Y esta seria:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<saml2p:Response xmlns:saml2p="urn:oasis:names:tc:SAML:2.0:protocol" xmlns:xs="http://www.w3.org/2001/XMLSchema" Destination="http://localhost:8080/okta/acs-url" ID="id9115525965559100376334538585" InResponseTo="saml-req-001" IssueInstant="2026-03-22T08:17:50.944Z" Version="2.0">
+ <saml2:Issuer xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity">http://www.okta.com/exk117uc9zogTDa2n698</saml2:Issuer>
+ <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+  <ds:SignedInfo>
+   <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"></ds:CanonicalizationMethod>
+   <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"></ds:SignatureMethod>
+   <ds:Reference URI="#id9115525965559100376334538585">
+    <ds:Transforms>
+     <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"></ds:Transform>
+     <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#">
+      <ec:InclusiveNamespaces xmlns:ec="http://www.w3.org/2001/10/xml-exc-c14n#" PrefixList="xs"></ec:InclusiveNamespaces>
+     </ds:Transform>
+    </ds:Transforms>
+    <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></ds:DigestMethod>
+    <ds:DigestValue>zMGYcNtZOIwTLZ4t92gqHeZPu1MIdIVZh9wCgSIE6Vs=</ds:DigestValue>
+   </ds:Reference>
+  </ds:SignedInfo>
+  <ds:SignatureValue>E49U0WC7ca4qHHePtsqGMmVf9DDD3eDrCYSgMqHVXO/kxD6l0Ua5I8SBH7soJaxXO0y1NHpYJ0wOr4Z9pzI7UEYX6wHlHSOoyX/g9DFBb3HhnvRqIu0UlUn4xRWK91IuU7Um9j90ORTb11JVlG4Fha/SNKkiShC2UDQQXdIIJOfHiQUo787LT7SOG7ytp8qFzOebWCA0NdFibj4j9jWSd7uWZDWq91n3khoCpmx+PmbLLdPLroChci0v8/JwzdL2XuDFpE8TpefIJSehuP/Njnb1QHBkm/L8aX3OT4JCCvHSz9QlpHHPifKmLc3MfqDIYKSm0Xo1BFdrn5MrdTNaew==</ds:SignatureValue>
+  <ds:KeyInfo>
+   <ds:X509Data>
+    <ds:X509Certificate>MIIDtDCCApygAwIBAgIGAZ0TLZrTMA0GCSqGSIb3DQEBCwUAMIGaMQswCQYDVQQGEwJVUzETMBEG
+A1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEU
+MBIGA1UECwwLU1NPUHJvdmlkZXIxGzAZBgNVBAMMEmludGVncmF0b3ItODkwMDc5NzEcMBoGCSqG
+SIb3DQEJARYNaW5mb0Bva3RhLmNvbTAeFw0yNjAzMjIwMTMzMDlaFw0zNjAzMjIwMTM0MDlaMIGa
+MQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNj
+bzENMAsGA1UECgwET2t0YTEUMBIGA1UECwwLU1NPUHJvdmlkZXIxGzAZBgNVBAMMEmludGVncmF0
+b3ItODkwMDc5NzEcMBoGCSqGSIb3DQEJARYNaW5mb0Bva3RhLmNvbTCCASIwDQYJKoZIhvcNAQEB
+BQADggEPADCCAQoCggEBANXwrNP9vuLlgcc+yzX9PjY7VZI5S8AzWsoWQ4lpKqCgTcfZPaMJng/e
+vXmLX8CkoChVko3T15xHudkU9yg4mniIYETAFQ5D+sTVhWjy8Q42m3z0BoTAI+CkHVzQm+Gwg6ta
+pRy3V3jyvyB6P/Ll4UNnSxMDb09KBTeezL1ntK9wzRZ9+VGxvh1zPeiysjBjfqhoYjfkHYpPU2R0
+t0VLd0ta0QEs+pteHBZrKs/+iZ/HWfie8VJk6KCojoqwfyMt9WZ05gEW8wj2NsluqiDs3XSTigEs
+gicbwQt5dcVPqZHtVafTo7SB1tDk/+sCl/iDvnbXlQLN1LyGmEqy/G/5O6kCAwEAATANBgkqhkiG
+9w0BAQsFAAOCAQEAm9bACFStQAKifn3whVP4Z38dKrjcE3tIkUJw3KpUYgpk5JX95BzNiRncQcml
+ysX+yWItEwA+Xa09qGbJwXOyBfqAMdSJXH6WlTKHZhgX4ivTmEdNeL+756LHprqb4Fqbqptp/WHf
+VcGRXfPMZSD934IkNYFbW44IzcjmbJPu0Ju/v3G39K6GkU5gTJISvXzWaLSrtjY/Yqkoa7/CyoY/
+53w3jeEJlZ7QQdkV3W5tE9BVsXvRvZ9NqUqRXtWuZuMaQZJ0EpjWIlqb3vX4r+7+epjB4IlE/CUV
+2NgCDJ9K0zoZ7RS6Tw08EvZsi1UQsRqfe8Lz58JywyiMC8ikZZUPow==</ds:X509Certificate>
+   </ds:X509Data>
+  </ds:KeyInfo>
+ </ds:Signature>
+ <saml2p:Status xmlns:saml2p="urn:oasis:names:tc:SAML:2.0:protocol">
+  <saml2p:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success"></saml2p:StatusCode>
+ </saml2p:Status>
+ <saml2:Assertion xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" xmlns:xs="http://www.w3.org/2001/XMLSchema" ID="id4473343799283844125136753370" IssueInstant="2026-03-22T08:17:50.944Z" Version="2.0">
+  <saml2:Issuer xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity">http://www.okta.com/exk117uc9zogTDa2n698</saml2:Issuer>
+  <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+   <ds:SignedInfo>
+    <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"></ds:CanonicalizationMethod>
+    <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"></ds:SignatureMethod>
+    <ds:Reference URI="#id4473343799283844125136753370">
+     <ds:Transforms>
+      <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"></ds:Transform>
+      <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#">
+       <ec:InclusiveNamespaces xmlns:ec="http://www.w3.org/2001/10/xml-exc-c14n#" PrefixList="xs"></ec:InclusiveNamespaces>
+      </ds:Transform>
+     </ds:Transforms>
+     <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></ds:DigestMethod>
+     <ds:DigestValue>gYdC4dzfqdYpwetcRXzRozz/PfJ2+UrRDrb4XuigLHI=</ds:DigestValue>
+    </ds:Reference>
+   </ds:SignedInfo>
+   <ds:SignatureValue>JvpJbyHVwEeFPsmZPsg2se4cdnjwNG8HzDTXUVgVnLUbsZfCUU9pAL/ZcjdK8v3A17R1Tcty9xeecFt0S2GW4sG6NIhCJdcmTPxu4C9B7rlyYsYG6yWD2Sm5mElmdx8uEPDy9+2bxM6MiOZlyj012SBSC6SNEt8gvOYfC0FDBZFnmryXJaXIdKDd8AjA4dkkiJ1z2DZm5pTTLDghc28NmJZtSCsS/yJ41hDFVKiGubwAAuwXo8d6qs2nXHNBpMV5PgakKxozjkf6URdqPGVyn3QNQSRRcAmrGLGQ+vKXnBkfijOlbn9UAx7wfdj02V9gb6Xbt0ubb+Lzs0w/yPbBCg==</ds:SignatureValue>
+   <ds:KeyInfo>
+    <ds:X509Data>
+     <ds:X509Certificate>MIIDtDCCApygAwIBAgIGAZ0TLZrTMA0GCSqGSIb3DQEBCwUAMIGaMQswCQYDVQQGEwJVUzETMBEG
+A1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEU
+MBIGA1UECwwLU1NPUHJvdmlkZXIxGzAZBgNVBAMMEmludGVncmF0b3ItODkwMDc5NzEcMBoGCSqG
+SIb3DQEJARYNaW5mb0Bva3RhLmNvbTAeFw0yNjAzMjIwMTMzMDlaFw0zNjAzMjIwMTM0MDlaMIGa
+MQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNj
+bzENMAsGA1UECgwET2t0YTEUMBIGA1UECwwLU1NPUHJvdmlkZXIxGzAZBgNVBAMMEmludGVncmF0
+b3ItODkwMDc5NzEcMBoGCSqGSIb3DQEJARYNaW5mb0Bva3RhLmNvbTCCASIwDQYJKoZIhvcNAQEB
+BQADggEPADCCAQoCggEBANXwrNP9vuLlgcc+yzX9PjY7VZI5S8AzWsoWQ4lpKqCgTcfZPaMJng/e
+vXmLX8CkoChVko3T15xHudkU9yg4mniIYETAFQ5D+sTVhWjy8Q42m3z0BoTAI+CkHVzQm+Gwg6ta
+pRy3V3jyvyB6P/Ll4UNnSxMDb09KBTeezL1ntK9wzRZ9+VGxvh1zPeiysjBjfqhoYjfkHYpPU2R0
+t0VLd0ta0QEs+pteHBZrKs/+iZ/HWfie8VJk6KCojoqwfyMt9WZ05gEW8wj2NsluqiDs3XSTigEs
+gicbwQt5dcVPqZHtVafTo7SB1tDk/+sCl/iDvnbXlQLN1LyGmEqy/G/5O6kCAwEAATANBgkqhkiG
+9w0BAQsFAAOCAQEAm9bACFStQAKifn3whVP4Z38dKrjcE3tIkUJw3KpUYgpk5JX95BzNiRncQcml
+ysX+yWItEwA+Xa09qGbJwXOyBfqAMdSJXH6WlTKHZhgX4ivTmEdNeL+756LHprqb4Fqbqptp/WHf
+VcGRXfPMZSD934IkNYFbW44IzcjmbJPu0Ju/v3G39K6GkU5gTJISvXzWaLSrtjY/Yqkoa7/CyoY/
+53w3jeEJlZ7QQdkV3W5tE9BVsXvRvZ9NqUqRXtWuZuMaQZJ0EpjWIlqb3vX4r+7+epjB4IlE/CUV
+2NgCDJ9K0zoZ7RS6Tw08EvZsi1UQsRqfe8Lz58JywyiMC8ikZZUPow==</ds:X509Certificate>
+    </ds:X509Data>
+   </ds:KeyInfo>
+  </ds:Signature>
+  <saml2:Subject xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion">
+   <saml2:NameID Format="urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified">starlingapps@zohomail.com</saml2:NameID>
+   <saml2:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+    <saml2:SubjectConfirmationData InResponseTo="saml-req-001" NotOnOrAfter="2026-03-22T08:22:50.944Z" Recipient="http://localhost:8080/okta/acs-url"></saml2:SubjectConfirmationData>
+   </saml2:SubjectConfirmation>
+  </saml2:Subject>
+  <saml2:Conditions xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" NotBefore="2026-03-22T08:12:50.944Z" NotOnOrAfter="2026-03-22T08:22:50.944Z">
+   <saml2:AudienceRestriction>
+    <saml2:Audience>http://localhost:8080/appbuilder-simple-server</saml2:Audience>
+   </saml2:AudienceRestriction>
+  </saml2:Conditions>
+  <saml2:AuthnStatement xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" AuthnInstant="2026-03-22T08:14:41.908Z" SessionIndex="saml-req-001">
+   <saml2:AuthnContext>
+    <saml2:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport</saml2:AuthnContextClassRef>
+   </saml2:AuthnContext>
+  </saml2:AuthnStatement>
+  <saml2:AttributeStatement xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion">
+   <saml2:Attribute Name="firstName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified">
+    <saml2:AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">EMMANUEL</saml2:AttributeValue>
+   </saml2:Attribute>
+   <saml2:Attribute Name="lastName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified">
+    <saml2:AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">GARCIA</saml2:AttributeValue>
+   </saml2:Attribute>
+  </saml2:AttributeStatement>
+ </saml2:Assertion>
+</saml2p:Response>
+
+
+--------
+
+
+
+La importancia de la firma, como se crea:
+Primero vamos con el Signature del Assertion:
+Signature contiene SignedInfo, SignatureValue y KeyInfo
+
+Se supone que el Assertion Tag es signed, es decir se pasa por un SHA-256 y el SignedInfo contiene ese digest en DigestValue,
+Hasta aqui todo es estandard, salvo el DigestValue que tiene el valor del assertion tag pasado por sha-256 y la etiqueta
+Reference con el atributo URI que hace referencia al Assertion tag, todo lo demas no cambia.
+
+Depues se supone que se pase por otro sha-26 el SignedInfo completo y se encripta con la private key del IdP y ese valor
+v como valor del tag SignatureValue
+
+Finalmente como sefirmo con la private key de IdP, se manda a certificado con la llave publica en el tag KeyInfo.
+
+El tag Signature va dentro de tag Assertion.
+
+De forma similar se crea otro tag Signature que finalmente se mete en el tag raiz Response, 
+esto pasa porque en okta declaramos sha-256 como el digest, RSA para firmar y encriptar y que estos dos
+pedazos , a respueta y el assertion, iban a regresar firmados.
+
+OJO, lo primero a validar es el certificado, se supone que ya lo tenemos cuando configuramos
+la aplication en Okta, se manda aqui porque puede haber varios certificados , asi que asqui se manda
+el que se uso para firmar, bueno, la contraparte porque se firmo con su corresponeidnte private key.
+
+
+Depues debemos usar la inversa, el valor de SignatureValue es la la firma encriptada, asi que
+podemos desencriptar con la public key del certificado, eso nos dara un digest, el segundo Digest
+creado a partir del SignedInfo en el paso de firmar.
+
+Despues, crear el digest del SignedInfo y verificar que los dos digest correspondan.
+
+Eso es la primera parte, despues falta validar el xml original, si estamos verificand AssertionTag,
+ese seria el XML original pero removiendo el tag Signature, nuevamente se creria un digest de ese xml
+y ese valor debe ser el mismo que el valor de la etiqueta DigestValue, todo esto es la inversa.
+
+Por que hacemos todo esto, o la aplicacion debe hacer estas validaciones, si en una API REST no se hace
+normalmnete, la razon es que en los flujos de SAML, el que esta en medio es el brower, es una llamada
+asyncrona y el ID en la AuthRequest o el inRespontTo en la Response, no son sufcientes para indicar que la
+respuesta viene del saml, pudo ser interceptada en medio, alterada etc.
+
+
+Para validar el firmado, usamos esto: Validate -> SAML Response
+
+
+Y pegamos todo lo que nos llego como respuesta es decir el Base64 ,llenando los campos que obtenemos del XML SAML
+Response:
+
+IdP EntityId: http://www.okta.com/exk117uc9zogTDa2n698
+SP EntityId: http://localhost:8080/appbuilder-simple-server
+SP Attribute Consume Service Endpoint: http://localhost:8080/okta/acs-url
+Target URL, Destination of the Response: http://localhost:8080/okta/acs-url
+
+Del archivo metadata sacamos el certificado: X.509 cert of the IdP (to check Signature)
