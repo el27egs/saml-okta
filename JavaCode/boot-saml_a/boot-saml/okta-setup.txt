@@ -1,0 +1,32 @@
+SAML 2.0 Application Setup in Okta 
+===================================
+
+1. Setup the Application Integration with the following properties
+
+    App name                       = saml-boot-app
+    Single sign on URL             = http://localhost:8080/login/saml2/sso/carsonline
+    Audience URI (SP Entity ID)    = http://localhost:8080/saml2/service-provider-metadata/carsonline
+    Default RelayState             = http://localhost:8080/carsonline
+    Name ID format                 = Unspecified
+    Application username           = Email Prefix
+    Assertion Encryption           = Encrypted
+    Encryption Certificate         = <upload certificate.crt>
+    Enable Single Logout           = <Enable this> 
+    Single Logout URL              = http://localhost:8080/logout/saml2/slo
+    SP Issuer                      = http://localhost:8080/saml2/service-provider-metadata/carsonline
+    Signature Certificate          = <upload certificate.crt>
+
+    Attribute Statements : 
+
+        first, Value = user.firstName
+        last , Value = user.lastName
+    
+    Group Attribute Statements : 
+
+        groups, Filter = Matches Regexp = cars\..*
+
+2. To extract IDP Metadata, do the following 
+    - click on tab "Sign On"
+    - click on link "Identity Provider metadata"
+    - Right click and select "View page source"
+    - Copy the complete XML and paste into file "main/resources/okta-metadata.yml"

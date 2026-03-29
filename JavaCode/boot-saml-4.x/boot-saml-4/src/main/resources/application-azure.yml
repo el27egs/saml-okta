@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: TRACE
+    org.springframework.security: TRACE
+    org.springframework.security.saml: TRACE
+    org.opensaml.xmlsec: TRACE
+
+spring:
+  security:
+    saml2:
+      relyingparty:
+        registration:
+          carsonline:
+            signing:
+              credentials:
+                - private-key-location: "classpath:credentials/private.key"
+                  certificate-location: "classpath:credentials/certificate.crt"
+            decryption:
+              credentials:
+                - private-key-location: "classpath:credentials/private.key"
+                  certificate-location: "classpath:credentials/certificate.crt"
+            assertingparty:
+              metadata-uri: "classpath:azure-metadata.xml"

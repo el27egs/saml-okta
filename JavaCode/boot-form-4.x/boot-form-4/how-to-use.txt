@@ -1,0 +1,34 @@
+Instructions on running the "Used Car Portal" Application 
+=========================================================
+Note - This example uses Spring Boot 3.3.x
+
+Steps: 
+
+1. Install latest JDK from the link below. Set JAVA_HOME to installation directory ( e.g C:\devtools\jdk-17.0.1)
+
+    https://jdk.java.net/
+    
+    Note : It's not necessary that JDK 17 needs to be installed. 
+           You can use any JDK >= Version 17 but update pom.xml
+    
+
+2. Install Maven from the following site
+    
+    https://maven.apache.org/install.html
+    
+    Use "mvn --version" to make sure that JDK is taken.
+    
+
+3. To run the Cars Portal Application at port 8080
+
+    mvn spring-boot:run 
+    
+
+4. Access the Cars Portal Application
+
+    http://localhost:8080/
+    
+
+5. Login using hardcoded credentials
+    - bob/bob
+    - alice/alice

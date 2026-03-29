@@ -1,0 +1,134 @@
+Para logout
+En Okta se configura o se habilita el SLO
+Te pedira el certificado, dos veces, es el del SP
+
+Default Relay State lo deje como /, pero en el ejemplo coloco http://localhost:8081/
+
+EL tiene un Request para genera manualmente, recuerda que con la metadata del SP
+sacar todos los valores, por ejemplo, como el lo hizo manualmente, sin una implemtenacion
+o bibliteca de saml, el coloco los valores, pero con la app de Go y la biblioteca usada
+esos valores cambiaron.
+
+Enla peticion de request esta:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<samlp:LogoutRequest 
+    Destination="{IDP-LOGOUT-URL}" 
+    ID="{UNIQUE-GENERATED-ID}" 
+    IssueInstant="2021-10-17T22:15:30.099Z" 
+    NotOnOrAfter="2021-10-18T22:01:30.099Z" 
+    Reason="SP Logout" 
+    Version="2.0" 
+    xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" 
+    xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
+  <saml:Issuer>{SP-ENTITY-ID}</saml:Issuer>
+  <saml:NameID Format="urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified">{ASSERTION-NAME-ID}</saml:NameID>
+  <samlp:SessionIndex>{REQUEST-UNIQUE-GENERATED-ID}</samlp:SessionIndex>
+</samlp:LogoutRequest>
+
+
+
+{IDP-LOGOUT-URL}
+Es la URL completa de logou que aparece en la metadata del IdP
+
+{UNIQUE-GENERATED-ID}
+CAdena aleatoria
+
+FIjate que el IssueInstant y NotOnOrAfter tengan valores razonables
+
+
+{SP-ENTITY-ID}
+SP ID, de la metadata del SP o como el lo hizo, algo manual
+
+
+{ASSERTION-NAME-ID}
+Este es el NameId, en este caso como se uso unespecified, este regresa el username
+y como username fue configurado para usar el UserId, ese es el valor a usar aqui
+
+
+{REQUEST-UNIQUE-GENERATED-ID}
+Es el valor del ID en el AuthRequest, aque que fue aleatorio en el
+
+Una vez con esto
+
+samltools.com
+
+Sign -> Logout request
+
+Pegas el XML, RelayState http://localhost:8081
+PrivateKey es la del SP
+Certificate es de la metadata del Idp
+
+Y usamos el Signature porque es GET redirect, el xml generado parace que es para POST
+
+
+Ahora usamoa la plantilla de la URL
+
+IMPORTANTE:
+En el paso anterior obtuvimos la Signatura desde el XML Request, ambos valores y
+todos aquellos en la url deben ser encoded con code/decode -> url encode/decode
+Solo el XML lleva un paso extra que es: code/decode ->deflate + base64 encode y 
+despues: code/decode -> url encode/decode
+
+
+Veamos:
+
+<IDP-SLO-URL>?SAMLRequest=<SAML-REQUEST-URL-ENCODED>&SigAlg=<SIG-ALG>&Signature=<URL-ENCODED-SIGN>&RelayState=http%3A%2F%2Flocalhost%3A8080
+
+
+<IDP-SLO-URL>
+Es la SLO URL desde la metadata del IdP
+
+<SAML-REQUEST-URL-ENCODED>
+Es el XML de Request para SLO, primero code/decode -> deflate + base64 encode
+despues: code/decode -> url encode/decode
+
+
+
+<SIG-ALG>
+Es el algoritmo tomado desde donde creamos la signatura algo como 
+http://www.w3.org/2000/09/xmldsig#rsa-sha1
+code/decode -> url encode/decode
+
+<URL-ENCODED-SIGN>
+LA firma del primer paso que usaremos con GET
+code/decode -> url encode/decode
+
+RelayState
+code/decode -> url encode/decode
+
+
+El video indica que aunque el endpoint diga que todo fue correcto, se debe ver 
+la SAML Response porque las apliaciones, como la de él de ejemplo, solo manda un
+mensaje exitoso a pantalla pero en la respuesta viene un campo que indica el estatus
+del logout en Status.StatusCode[Value]
+
+
+
+COn los plugins se puede ver la respuesta, pero aqui los pasos manuales.
+
+En DeveTools obteenos SAMLResponse, el Base64
+em samtools.com Code/Decode -> Base64 DEcode + inflate
+Este paso es para obtener el XML Encriptado, encriptado en este caso, pero digamos
+que es para obtenr el SAMLResponse en base64 despues de que se decodifica el base64
+y se descomprime y queda el XML crudo de la respuesta de Okta.
+
+Nota:
+Este paso se hace porque dice que el validador de samltools.com no acepta el base64
+
+Despues:
+Validate -> SAML Logout Respone, pegamos el XML
+EntityId Source es el ID del IDP de la metadata del IdP lo sacamos
+Target URL, Destination of the Logout Response es el url logout de nuestro SP
+RelayState, el que colocamos en samltools.com cuando estabamos creando la peticion
+de logout.
+algoritmo el mismo de samltools.como cuando creamos la peticion de logout.
+Certificado en este caso es la del IdP
+
+
+
+
+
+
+
+

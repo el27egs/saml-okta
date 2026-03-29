@@ -1,0 +1,36 @@
+server:
+   port: 8080
+
+logging:
+   level:
+      root: INFO
+      org.springframework.web: DEBUG
+      org.springframework.security: DEBUG
+      org.springframework.security.saml: TRACE
+      org.opensaml.xmlsec: DEBUG
+   pattern:
+      console: "%d{HH:mm:ss.SSS} %-5level - %msg%n"
+
+spring:
+   security:
+      saml2:
+         relyingparty:
+            registration:
+               carsonline:
+                  signing:
+                     credentials:
+                        # These credentials are used when signing requests
+                        # Create your own private.key and certificate
+                        - private-key-location: "classpath:credentials/private.key"
+                          certificate-location: "classpath:credentials/certificate.crt"
+                  decryption:
+                     credentials:
+                        - private-key-location: "classpath:credentials/private.key"
+                          certificate-location: "classpath:credentials/certificate.crt"
+                  singlelogout:
+                     binding: POST
+                     url: "{baseUrl}/logout/saml2/slo"
+                  assertingparty:
+                     # Okta IDP Information (Just point to metadata saved locally)
+                     # You can also point to Http url of Okta metadata (as below)
+                     metadata-uri: "https://integrator-NNNN.okta.com/app/<change this>/sso/saml/metadata"

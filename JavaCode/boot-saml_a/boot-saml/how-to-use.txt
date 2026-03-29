@@ -1,0 +1,54 @@
+Instructions on running the "Used Car Portal" Application (SAML Version) 
+========================================================================
+
+Steps: 
+
+1. Install JDK 17 from the link below. Set JAVA_HOME to installation directory ( e.g C:\devtools\jdk-17.0.1)
+
+    https://jdk.java.net/17/
+    
+    Note : It's not necessary that JDK 17 needs to be installed. 
+           You can use any JDK >= Version 11 but update pom.xml 
+    
+
+2. Install Maven from the following site
+    
+    https://maven.apache.org/install.html
+    
+    Use "mvn --version" to make sure that JDK 17 is taken. 
+    
+
+3. Create files private.key and certificate.crt for the Application.
+
+	- Review Lecture "Use samltool.com to create RSA keys and Certificate"
+	- These files must be stored in directory "main/resources/credentials"  
+
+
+4. Create the SAML 2.0 Integration Application from the Okta Console (See file okta-setup.txt for Demo setup)
+
+	- Make sure you set the correct SP Endpoints as expected by Spring Boot
+	- Create the groups used by the application - cars.user and cars.admin
+	- Assign yourself to the Application and groups 
+	- Extract IDP Metadata to a file called "main/resources/okta-metadata.yml"
+	- Review Lecture "Spring Boot SAML Integration Code Walkthrough"
+	- Review lecture "Okta Setup for Spring Boot"
+
+
+5. Create the following application files (as indicated in steps 3 and 4)
+
+	- main/resources/credentials/private.key
+	- main/resources/credentials/certificate.key
+	- main/resources/okta-metadata.yml
+
+
+6. To run the Cars Portal Application at port 8080
+
+    mvn spring-boot:run 
+    
+
+7. Access the Cars Portal Application
+
+    http://localhost:8080/
+    
+
+8. Login using the Okta user(s)

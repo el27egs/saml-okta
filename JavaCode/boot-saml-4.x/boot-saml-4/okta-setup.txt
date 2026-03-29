@@ -1,0 +1,43 @@
+SAML 2.0 Application Setup in Okta 
+===================================
+
+IMPORTANT : To make the projects work, you will have to create the private key, certificate and
+            optional saml metadata file and copy to resources directory as indicated in the steps.
+
+1. Generate a Private Key and a VALID Certificate for the Application saml-boot-app (See previous lectures)
+    - resources/credentials/private.key
+    - resources/credentials/certificate.crt
+
+2. Set up the Application Integration in Okta with the following properties
+
+    App name                       = saml-boot-app
+    Single sign on URL             = http://localhost:8080/login/saml2/sso/carsonline
+    Audience URI (SP Entity ID)    = http://localhost:8080/saml2/service-provider-metadata/carsonline
+    Default RelayState             = http://localhost:8080/carsonline
+    Name ID format                 = Unspecified
+    Application username           = Email Prefix
+    Assertion Encryption           = Encrypted
+    Encryption Certificate         = <upload certificate.crt>
+    Enable Single Logout           = <Enable this> 
+    Single Logout URL              = http://localhost:8080/logout/saml2/slo
+    SP Issuer                      = http://localhost:8080/saml2/service-provider-metadata/carsonline
+    Signature Certificate          = <upload certificate.crt>
+    Signed Requests                = No (Application will not send signed Request)
+
+    Attribute Statements : 
+
+        first, Expression = user.firstName
+        last , Expression = user.lastName
+        groups, Expression = user.getGroups({'group.profile.name': 'cars.*'}).![profile.name]
+
+3. Complete the setup
+4. To extract IDP SAML Metadata, do the following
+    - click on tab "Sign On"
+    - Under Metadata Details, copy the metadata URL and use Google Chrome to view it
+    - Save the file as resources/okta-metadata.xml
+5. Create two groups
+    - cars.admin
+    - cars.user
+6. From Application screen, assign the two groups to the Application saml-boot-app
+7. Create users and assign to these groups.
+    - Use these users to test the application

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/cars.css">
+<title>Edit Car</title>
+</head>
+<body>
+
+	<div class='container-fluid'>
+
+		<!-- The header with project name and logout link -->
+		<div class="row project-header">
+			<div class="col">
+				<h2>Used Car Online</h2>
+			</div>
+
+			<div class="d-flex flex-row-reverse bd-highlight">
+				<div class="p-2 bd-highlight">
+					<a href="/logout" style="color: #e8e3e3">Logout <th:block th:text="${name}"></th:block></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="row mt-4">
+			<div class="container">
+	  			<div class="row">
+	  	  			<div class="col-md-2 h6 text-right font-weight-bold">Logged User : </div>
+	    			<div class="col-md-2 h6 text-left"><span sec:authentication="name">?</span> </div>
+	  			</div>
+	  			<div class="row">
+	  	  			<div class="col-md-2 h6 text-right font-weight-bold">Authorities : </div>
+	    			<div class="col-md-2 h6 text-left"><span sec:authentication="authorities">?</span></div>
+	  			</div>
+			</div>
+		</div>
+
+		<div class="row mt-4 ml-1">
+			<h5> <a href="/carsonline">Go To Car Listing</a></h5>
+		</div>
+
+
+	</div>
+</body>
+</html>
